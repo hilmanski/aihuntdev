@@ -6,15 +6,25 @@ export async function getStaticPaths() {
 	const tools = await getCollection('tools');
 	return tools.map((tool) => ({
 		params: { slug: tool.id },
-		props: tool,
+		props: { tool, allTools: tools },
 	}));
 }
-type Props = CollectionEntry<'tools'>;
 
-const tool = Astro.props;
+interface Props {
+	tool: CollectionEntry<'tools'>;
+	allTools: CollectionEntry<'tools'>[];
+}
+
+const { tool, allTools } = Astro.props;
 const { Content } = await render(tool);
+
+// Find alternatives: tools that share at least one category, excluding current tool
+const alternatives = allTools
+	.filter((t) => t.id !== tool.id)
+	.filter((t) => t.data.category.some((cat) => tool.data.category.includes(cat)))
+	.slice(0, 3);
 ---
 
-<ToolPage {...tool.data}>
+<ToolPage {...tool.data} alternatives={alternatives}>
 	<Content />
 </ToolPage>

@@ -6,9 +6,11 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { slugify } from '../utils/slug';
 
-type Props = CollectionEntry<'tools'>['data'];
+interface Props extends CollectionEntry<'tools'>['data'] {
+	alternatives?: CollectionEntry<'tools'>[];
+}
 
-const { title, description, createdAt, logo, website, category } = Astro.props;
+const { title, description, createdAt, logo, website, category, alternatives = [] } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,46 +22,74 @@ const { title, description, createdAt, logo, website, category } = Astro.props;
 		<Header />
 		<main class="max-w-3xl mx-auto px-4 py-8">
 			<article>
-				{logo && (
-					<div class="mb-8 text-center">
+				<div class="flex gap-4 mb-6 items-start">
+					{logo && (
 						<img
 							src={logo}
 							alt={title}
-							class="h-16 w-16 rounded-lg mx-auto"
+							class="h-16 w-16 rounded-lg flex-shrink-0"
 						/>
+					)}
+					<div class="min-w-0 flex-1">
+						<h1 class="text-2xl font-bold text-gray-900">{title}</h1>
+						{category && category.length > 0 && (
+							<div class="flex flex-wrap gap-2 mt-2">
+								{category.map((cat) => (
+									<a
+										href={`/tools/category/${slugify(cat)}/`}
+										class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-300 no-underline"
+									>
+										{cat}
+									</a>
+								))}
+							</div>
+						)}
 					</div>
-				)}
-				<div class="text-center mb-8">
-					<FormattedDate date={createdAt} />
-					<h1 class="text-3xl font-bold mt-2 mb-4">{title}</h1>
 					{website && (
 						<a
 							href={`${website}${website.includes('?') ? '&' : '?'}ref=aihuntdev`}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="inline-block bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-700 no-underline text-sm mb-4"
+							class="flex-shrink-0 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-700 no-underline text-sm"
 						>
 							Visit Website →
 						</a>
 					)}
-					{category && category.length > 0 && (
-						<div class="flex flex-wrap gap-2 justify-center">
-							{category.map((cat) => (
-								<a
-									href={`/tools/category/${slugify(cat)}/`}
-									class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-300 no-underline"
-								>
-									{cat}
-								</a>
-							))}
-						</div>
-					)}
 				</div>
-				<hr class="border-gray-200 mb-8" />
+				<hr class="border-gray-200 mb-6" />
 				<div class="prose prose-gray max-w-none">
 					<slot />
 				</div>
+				<div class="mt-6 text-gray-500 text-sm">
+					Added on <FormattedDate date={createdAt} />
+				</div>
 			</article>
+
+			{alternatives.length > 0 && (
+				<section class="mt-12 pt-8 border-t border-gray-200">
+					<h2 class="text-2xl font-bold mb-6">Alternatives</h2>
+					<div class="grid gap-4">
+						{alternatives.map((alt) => (
+							<a
+								href={`/tools/${alt.id}/`}
+								class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow no-underline overflow-hidden"
+							>
+								{alt.data.logo && (
+									<img
+										src={alt.data.logo}
+										alt={alt.data.title}
+										class="h-12 w-12 rounded-lg flex-shrink-0"
+									/>
+								)}
+								<div class="min-w-0 flex-1">
+									<h3 class="font-semibold text-gray-900 truncate">{alt.data.title}</h3>
+									<p class="text-gray-600 text-sm line-clamp-2">{alt.data.description}</p>
+								</div>
+							</a>
+						))}
+					</div>
+				</section>
+			)}
 		</main>
 		<Footer />
 	</body>

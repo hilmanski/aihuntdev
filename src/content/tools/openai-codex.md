@@ -6,7 +6,7 @@ logo: "https://assets.aihunt.dev/1768617647531-1h31hskrw2d.png"
 website: "https://openai.com/codex/"
 category:
   - "AI Assistant"
-  - "Cloud IDE"
+  - "CLI"
 ---
 
 OpenAI Codex is an AI-powered coding agent that runs in a sandboxed cloud environment. It can handle multiple tasks in parallel, from writing features and fixing bugs to answering questions about your codebase. Powered by codex-1, a version of o3 optimized for software engineering.
