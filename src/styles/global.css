@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+/* Tool content typography */
+.tool-content {
+	line-height: 1.7;
+}
+.tool-content h2 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	color: #111827;
+}
+.tool-content h3 {
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
+	color: #1f2937;
+}
+.tool-content p {
+	margin-bottom: 1rem;
+}

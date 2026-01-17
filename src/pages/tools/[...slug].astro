@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import ToolPage from '../../layouts/ToolPage.astro';
+import ToolPage from '../../layouts/ToolPage.astro'; 
 
 export async function getStaticPaths() {
 	const tools = await getCollection('tools');
@@ -22,7 +22,8 @@ const { Content } = await render(tool);
 const alternatives = allTools
 	.filter((t) => t.id !== tool.id)
 	.filter((t) => t.data.category.some((cat) => tool.data.category.includes(cat)))
-	.slice(0, 3);
+	.slice(0, 3);  
+
 ---
 
 <ToolPage {...tool.data} alternatives={alternatives}>

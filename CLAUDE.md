@@ -43,6 +43,14 @@ npm run preview  # Preview production build locally
 - Scoped CSS in `.astro` files, global styles in `src/styles/global.css`
 - SEO meta tags centralized in `src/components/BaseHead.astro`
 
+**Components for MDX:**
+- `Youtube` - Embed YouTube videos in MDX files:
+  ```mdx
+  import Youtube from '../../components/Youtube.astro';
+
+  <Youtube src="VIDEO_ID" />
+  ```
+
 **Integrations:**
 - `@astrojs/mdx` - MDX content support
 - `@astrojs/sitemap` - Auto sitemap generation
