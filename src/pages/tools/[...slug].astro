@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import ToolPage from '../../layouts/ToolPage.astro';
+
+export async function getStaticPaths() {
+	const tools = await getCollection('tools');
+	return tools.map((tool) => ({
+		params: { slug: tool.id },
+		props: tool,
+	}));
+}
+type Props = CollectionEntry<'tools'>;
+
+const tool = Astro.props;
+const { Content } = await render(tool);
+---
+
+<ToolPage {...tool.data}>
+	<Content />
+</ToolPage>

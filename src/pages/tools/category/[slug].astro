@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import Header from '../../../components/Header.astro';
+import { SITE_TITLE } from '../../../consts';
+import { slugify } from '../../../utils/slug';
+
+export async function getStaticPaths() {
+	const tools = await getCollection('tools');
+	const categories = [...new Set(tools.flatMap((tool) => tool.data.category))];
+
+	return categories.map((category) => ({
+		params: { slug: slugify(category) },
+		props: { category },
+	}));
+}
+
+interface Props {
+	category: string;
+}
+
+const { category } = Astro.props;
+
+const tools = (await getCollection('tools'))
+	.filter((tool) => tool.data.category.includes(category))
+	.sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${category} | ${SITE_TITLE}`} description={`AI tools in ${category} category`} />
+	</head>
+	<body class="bg-gray-50 text-gray-900">
+		<Header />
+		<main class="max-w-4xl mx-auto px-4 py-8">
+			<div class="mb-8">
+				<a href="/" class="text-gray-500 hover:text-gray-700 text-sm">← Back to all tools</a>
+			</div>
+			<h1 class="text-3xl font-bold mb-8">{category}</h1>
+			<div class="grid gap-6 md:grid-cols-2">
+				{
+					tools.map((tool) => (
+						<a
+							href={`/tools/${tool.id}/`}
+							class="block p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow no-underline"
+						>
+							{tool.data.logo && (
+								<img
+									src={tool.data.logo}
+									alt={tool.data.title}
+									class="h-12 w-12 rounded-lg mb-4"
+								/>
+							)}
+							<h2 class="text-xl font-semibold text-gray-900 mb-2">{tool.data.title}</h2>
+							<p class="text-gray-600 text-sm mb-2">{tool.data.description}</p>
+							<FormattedDate date={tool.data.createdAt} />
+						</a>
+					))
+				}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
