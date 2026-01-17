@@ -17,6 +17,7 @@ category:
   - "Category 1"
   - "Category 2"
 ---
+brief summary / explanation
 ```
 
 | Field | Type | Required | Description |
