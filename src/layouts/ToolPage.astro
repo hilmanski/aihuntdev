@@ -50,12 +50,22 @@ const { title, description, createdAt, logo, website, category, alternatives = [
 							href={`${website}${website.includes('?') ? '&' : '?'}ref=aihuntdev`}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="flex-shrink-0 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-700 no-underline text-sm"
+							class="hidden md:block flex-shrink-0 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-700 no-underline text-sm"
 						>
 							Visit Website →
 						</a>
 					)}
 				</div>
+				{website && (
+					<a
+						href={`${website}${website.includes('?') ? '&' : '?'}ref=aihuntdev`}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="md:hidden block w-full text-center bg-gray-900 text-white px-4 py-3 rounded-lg hover:bg-gray-700 no-underline text-sm mb-6"
+					>
+						Visit Website →
+					</a>
+				)}
 				<hr class="border-gray-200 mb-6" />
 				<div class="tool-content">
 					<slot />

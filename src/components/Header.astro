@@ -4,7 +4,7 @@ import HeaderLink from './HeaderLink.astro';
 ---
 
 <header class="bg-white shadow-sm">
-	<nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+	<nav class="max-w-4xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
 		<a href="/" class="font-bold text-lg text-gray-900 no-underline">{SITE_TITLE}</a>
 		<div class="flex gap-4">
 			<HeaderLink href="/">Home</HeaderLink>
