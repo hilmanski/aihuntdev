@@ -37,7 +37,7 @@ Tools are stored in `src/content/tools/` as Markdown/MDX files with the followin
 title: "Tool Name"
 description: "Brief description of the tool"
 createdAt: 2025-01-17
-logo: ""                      # Logo URL (default: "")
+logo: ""                      # Logo URL (default: "") you can leave this blank
 website: ""                   # Tool website URL (default: "")
 category:
   - "Category 1"

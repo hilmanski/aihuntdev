@@ -1,0 +1,11 @@
+---
+title: "Zed"
+description: "A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter, built for speed and collaboration."
+createdAt: 2025-01-17
+logo: "https://assets.aihunt.dev/1768618883976-yurblt1eky.jpg"
+website: "https://zed.dev"
+category:
+  - "Text Editor"
+---
+
+Zed is a next-generation code editor designed for high-performance and real-time collaboration. Built by the creators of Atom and Tree-sitter, it features lightning-fast performance, integrated AI assistance, and seamless multiplayer editing capabilities.
