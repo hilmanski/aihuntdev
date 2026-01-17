@@ -1,8 +1,6 @@
-# About
-
-Name: AIHunt.dev
-Description: Find the best developer AI tools for your next project.
-Think of Product Hunt but for AI tools for developer.
+# About AIHunt.dev
+Find the best developer AI tools for your next project.  
+Imagine ProductHunt, but specifically for AI tools designed for developer
 
 ## Content Structure (How to contribute)
 
