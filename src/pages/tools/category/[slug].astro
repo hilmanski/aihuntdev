@@ -9,29 +9,39 @@ import { slugify } from '../../../utils/slug';
 
 export async function getStaticPaths() {
 	const tools = await getCollection('tools');
-	const categories = [...new Set(tools.flatMap((tool) => tool.data.category))];
 
-	return categories.map((category) => ({
-		params: { slug: slugify(category) },
-		props: { category },
+	// Group categories by their slug to handle case variations
+	const categoryMap = new Map<string, string>();
+	tools.flatMap((tool) => tool.data.category).forEach((cat) => {
+		const slug = slugify(cat);
+		// Keep the first occurrence as the canonical display name
+		if (!categoryMap.has(slug)) {
+			categoryMap.set(slug, cat);
+		}
+	});
+
+	return Array.from(categoryMap.entries()).map(([slug, category]) => ({
+		params: { slug },
+		props: { category, categorySlug: slug },
 	}));
 }
 
 interface Props {
 	category: string;
+	categorySlug: string;
 }
 
-const { category } = Astro.props;
+const { category, categorySlug } = Astro.props;
 
 const tools = (await getCollection('tools'))
-	.filter((tool) => tool.data.category.includes(category))
+	.filter((tool) => tool.data.category.some((cat) => slugify(cat) === categorySlug))
 	.sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`${category} | ${SITE_TITLE}`} description={`AI tools in ${category} category`} />
+		<BaseHead title={`${category} | ${SITE_TITLE}`} description={`Discover top AI tools in ${category} category. Find the best ${category} for your next project`} />
 	</head>
 	<body class="bg-gray-50 text-gray-900">
 		<Header />

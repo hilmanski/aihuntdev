@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import ToolPage from '../../layouts/ToolPage.astro'; 
+import ToolPage from '../../layouts/ToolPage.astro';
+import { slugify } from '../../utils/slug'; 
 
 export async function getStaticPaths() {
 	const tools = await getCollection('tools');
@@ -19,9 +20,10 @@ const { tool, allTools } = Astro.props;
 const { Content } = await render(tool);
 
 // Find alternatives: tools that share at least one category, excluding current tool
+const toolCategorySlugs = tool.data.category.map(slugify);
 const alternatives = allTools
 	.filter((t) => t.id !== tool.id)
-	.filter((t) => t.data.category.some((cat) => tool.data.category.includes(cat)))
+	.filter((t) => t.data.category.some((cat) => toolCategorySlugs.includes(slugify(cat))))
 	.slice(0, 3);  
 
 ---
