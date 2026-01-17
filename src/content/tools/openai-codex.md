@@ -1,8 +1,8 @@
 ---
 title: "OpenAI Codex"
-description: "AI coding agent from OpenAI that can write, debug, and execute code in a sandboxed cloud environment powered by the codex-1 model."
+description: "AI coding agent from OpenAI that can write, debug, and execute code in a sandboxed cloud environment."
 createdAt: 2025-01-17
-logo: ""
+logo: "https://assets.aihunt.dev/1768617647531-1h31hskrw2d.png"
 website: "https://openai.com/codex/"
 category:
   - "AI Assistant"

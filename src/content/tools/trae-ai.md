@@ -2,7 +2,7 @@
 title: "Trae AI"
 description: "AI-powered IDE that helps developers write, understand, and debug code faster with intelligent code assistance."
 createdAt: 2025-01-17
-logo: ""
+logo: "https://assets.aihunt.dev/1768617477882-w5z58jcsh4.png"
 website: "https://trae.ai"
 category:
   - "AI Assistant"
