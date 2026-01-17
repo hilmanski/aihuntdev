@@ -8,7 +8,7 @@ import { slugify } from '../utils/slug';
 
 type Props = CollectionEntry<'tools'>['data'];
 
-const { title, description, createdAt, logo, category } = Astro.props;
+const { title, description, createdAt, logo, website, category } = Astro.props;
 ---
 
 <html lang="en">
@@ -32,6 +32,16 @@ const { title, description, createdAt, logo, category } = Astro.props;
 				<div class="text-center mb-8">
 					<FormattedDate date={createdAt} />
 					<h1 class="text-3xl font-bold mt-2 mb-4">{title}</h1>
+					{website && (
+						<a
+							href={`${website}${website.includes('?') ? '&' : '?'}ref=aihuntdev`}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-block bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-700 no-underline text-sm mb-4"
+						>
+							Visit Website →
+						</a>
+					)}
 					{category && category.length > 0 && (
 						<div class="flex flex-wrap gap-2 justify-center">
 							{category.map((cat) => (

@@ -9,6 +9,7 @@ const tools = defineCollection({
 			description: z.string(),
 			createdAt: z.coerce.date(),
 			logo: z.string().default(''),
+			website: z.string().default(''),
 			category: z.array(z.string()),
 		}),
 });

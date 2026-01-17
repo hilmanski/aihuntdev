@@ -27,6 +27,7 @@ npm run preview  # Preview production build locally
   description: string    # Brief description of the tool
   createdAt: date        # Date added (YYYY-MM-DD)
   logo: ""               # Logo URL (default: "")
+  website: ""            # Tool website URL (default: "")
   category:              # Array of category strings
     - "Category 1"
     - "Category 2"

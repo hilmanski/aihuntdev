@@ -38,6 +38,7 @@ title: "Tool Name"
 description: "Brief description of the tool"
 createdAt: 2025-01-17
 logo: ""                      # Logo URL (default: "")
+website: ""                   # Tool website URL (default: "")
 category:
   - "Category 1"
   - "Category 2"
@@ -50,6 +51,7 @@ category:
 | `description` | string | Yes | Brief description of the tool |
 | `createdAt` | date | Yes | Date added (YYYY-MM-DD) |
 | `logo` | string | No | Logo URL (default: "") |
+| `website` | string | No | Tool website URL (default: "") |
 | `category` | string[] | Yes | Array of category tags |
 
 Any static assets, like images, can be placed in the `public/` directory.

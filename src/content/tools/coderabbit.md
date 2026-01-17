@@ -3,6 +3,7 @@ title: "CodeRabbit"
 description: "AI-powered code review tool that provides instant, context-aware feedback on pull requests to help teams ship better code faster."
 createdAt: 2025-01-17
 logo: ""
+website: "https://coderabbit.ai"
 category:
   - "Code Review"
   - "CI/CD"
