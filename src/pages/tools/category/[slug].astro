@@ -45,7 +45,7 @@ const tools = (await getCollection('tools'))
 	</head>
 	<body class="bg-gray-50 text-gray-900">
 		<Header />
-		<main class="max-w-4xl mx-auto px-4 py-8">
+		<main class="max-w-6xl mx-auto px-4 py-8">
 			<div class="mb-8">
 				<a href="/" class="text-gray-500 hover:text-gray-700 text-sm">← Back to all tools</a>
 			</div>
@@ -53,7 +53,7 @@ const tools = (await getCollection('tools'))
 			<h2 class="mb-5">
 				Explore {category} tools for AI-developers.
 			</h2>
-			<div class="grid gap-6 md:grid-cols-2">
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{
 					tools.map((tool) => (
 						<a
