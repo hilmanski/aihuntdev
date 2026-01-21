@@ -24,7 +24,7 @@ const toolCategorySlugs = tool.data.category.map(slugify);
 const alternatives = allTools
 	.filter((t) => t.id !== tool.id)
 	.filter((t) => t.data.category.some((cat) => toolCategorySlugs.includes(slugify(cat))))
-	.slice(0, 3);  
+	.slice(0, 10);  
 
 ---
 
