@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+if [ -z "$1" ]; then
+    echo "Usage: ./deploy \"commit message\""
+    exit 1
+fi
+
+echo "Pulling from remote..."
+git pull
+
+echo "Adding changes..."
+git add .
+
+echo "Committing..."
+git commit -m "$1"
+
+echo "Pushing to remote..."
+git push
+
+echo "Done!"
