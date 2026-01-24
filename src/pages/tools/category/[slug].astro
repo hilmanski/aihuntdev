@@ -65,6 +65,7 @@ const tools = (await getCollection('tools'))
 									src={tool.data.logo}
 									alt={tool.data.title}
 									class="h-12 w-12 rounded-lg mb-4"
+								loading="lazy"
 								/>
 							)}
 							<h2 class="text-xl font-semibold text-gray-900 mb-2">{tool.data.title}</h2>
