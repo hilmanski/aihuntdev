@@ -59,7 +59,7 @@ const tools = (await getCollection('tools')).sort(
 									</div>
 									{tool.data.category && tool.data.category.length > 0 && (
 										<div class="flex flex-wrap gap-1 mt-1">
-											{tool.data.category.map((cat) => (
+											{tool.data.category.slice(0, 3).map((cat) => (
 												<span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">
 													{cat}
 												</span>
