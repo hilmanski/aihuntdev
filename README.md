@@ -11,6 +11,7 @@ Tools are stored in `src/content/tools/` as Markdown/MDX files with the followin
 title: "Tool Name"
 description: "Brief description of the tool"
 createdAt: 2026-01-17
+publishedAt: 2026-01-17       # When to publish/show on homepage (YYYY-MM-DD)
 logo: ""                      # Logo URL (default: "") you can leave this blank
 website: ""                   # Tool website URL (default: "")
 category:
@@ -25,6 +26,7 @@ brief summary / explanation
 | `title` | string | Yes | Name of the AI tool |
 | `description` | string | Yes | Brief description of the tool |
 | `createdAt` | date | Yes | Date added (YYYY-MM-DD) |
+| `publishedAt` | date | Yes | Publish date for homepage visibility (YYYY-MM-DD) |
 | `logo` | string | No | Logo URL (default: "") |
 | `website` | string | No | Tool website URL (default: "") |
 | `category` | string[] | Yes | Array of category tags |

@@ -8,6 +8,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 const tools = (await getCollection('tools')).sort(
 	(a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf(),
 );
+const now = new Date();
+const publishedTools = tools.filter((tool) => tool.data.publishedAt.valueOf() <= now.valueOf());
 ---
 
 <!doctype html>
@@ -26,7 +28,7 @@ const tools = (await getCollection('tools')).sort(
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{
-					tools.map((tool) => (
+					publishedTools.map((tool) => (
 						<div class="group relative p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
 							<a href={`/tools/${tool.id}/`} class="absolute inset-0 z-0" aria-label={tool.data.title}></a>
 							<div class="flex gap-4 mb-3">
